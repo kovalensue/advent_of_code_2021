@@ -18,7 +18,7 @@ def part_1(data):
             case _:
                 print(f"Unknown direction - {direction}")
 
-    print(horizontal_pos * depth)
+    return horizontal_pos * depth
 
 
 def part_2(data):
@@ -40,12 +40,12 @@ def part_2(data):
             case _:
                 print(f"Unknown direction - {direction}")
 
-    print(horizontal_pos * depth)
+    return horizontal_pos * depth
 
 
 if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(__file__), "input_data.txt"), "r") as file:
         data = [i for i in file.readlines()]
 
-    part_1(data)
-    part_2(data)
+    print("Part 1: " + str(part_1(data)))
+    print("Part 2: " + str(part_2(data)))
