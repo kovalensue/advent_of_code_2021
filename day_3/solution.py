@@ -20,22 +20,22 @@ def part_1(data):
     return int(g, 2) * int(e, 2)
 
 
-def process_data(data, idx, corr, search_most):
+def process_data(data, idx, correction, search_most):
     if idx < len(data[0]):
         col = [item[idx] for item in data]
-        most_common = Counter(col).most_common()
-        if len(most_common) == 2 and most_common[0][1] == most_common[1][1]:
-            most_common = corr
+        cnt = Counter(col).most_common()
+        if len(cnt) == 2 and cnt[0][1] == cnt[1][1]:
+            cnt = correction
         else:
-            most_common = most_common[0 if search_most else 1][0]
-        result = [item for item in data if item[idx] == most_common]
+            cnt = cnt[0 if search_most else 1][0]
+        res = [item for item in data if item[idx] == cnt]
     else:
         raise IndexError("Bad index value. Max index value allowed - " + str(len(data[0]) - 1) + ".")
 
-    if len(result) == 1:
-        return "".join(result[0])
+    if len(res) == 1:
+        return "".join(res[0])
     else:
-        return process_data(result, idx + 1, corr, search_most)
+        return process_data(res, idx + 1, correction, search_most)
 
 
 def part_2(data):
